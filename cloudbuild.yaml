@@ -1,0 +1,38 @@
+#steps:
+  # build the container image
+#- name: "gcr.io/cloud-builders/docker"
+#  args: ["build", "-t", "gcr.io/folkloric-folio-358909/private/sumne:0.1", "."]
+#  # push container image
+#- name: "gcr.io/cloud-builders/docker"
+#  args: ["push", "gcr.io/folkloric-folio-358909/private/sumne:0.1"]
+  # deploy container image to GKE
+#- name: "gcr.io/cloud-builders/gke-deploy"
+#  args:
+#  - run
+#  - --filename=./test
+  #- --name=jahsdj
+  #- --image=gcr.io/folkloric-folio-358909/private/sumne:0.1
+#  - --location=us-central1-a
+#  - --cluster=legi-gke
+steps:
+    # build the container image
+ # - name: "gcr.io/cloud-builders/docker"
+ #   args: ["build", "-t", "us-central1-docker.pkg.dev/adroit-nimbus-370411/session/session:2", "."]
+    # push container image
+ # - name: "gcr.io/cloud-builders/docker"
+ #   args: ["push", "us-central1-docker.pkg.dev/adroit-nimbus-370411/session/session:2"]
+    # kpt render
+  #- name: "gcr.io/cloud-builders/gke-deploy"
+  #  args:
+  #  - run
+  #  - --filename=./package
+    #- --name=jahsdj
+    #- --image=gcr.io/folkloric-folio-358909/private/sumne:0.1
+   # - --location=us-central1-a
+   # - --cluster=cluster-1
+  - name: "gcr.io/kpt-dev/kpt:v1.0.0-beta.1"
+    args:
+    - fn
+    - render
+    - package 
+   # - --cluster=cluster-1
